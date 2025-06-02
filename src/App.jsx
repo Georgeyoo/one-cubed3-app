@@ -7,10 +7,6 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <div style={{ padding: '20px' }}>
-        <h1>Welcome to One Cubed3</h1>
-        <p>Your gateway to the world of NFTs.</p>
-      </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/mint" element={<Mint />} />
