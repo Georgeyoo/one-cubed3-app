@@ -1,17 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
+import Landing from './pages/Landing';
 import Mint from './pages/Mint';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/mint" element={<Mint />} />
-      </Routes>
-    </Router>
+    <div className="min-h-screen bg-dark-bg">
+      <Router>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/mint" element={<Mint />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
