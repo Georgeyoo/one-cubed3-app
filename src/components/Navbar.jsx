@@ -74,22 +74,13 @@ export default function Navbar() {
           to="/"
           className="text-xl lg:text-2xl xl:text-3xl font-bold text-white hover:text-light-accent transition-colors"
         >
-          ABC
+          <img
+            src="/ABC-NFT.png"
+            alt="ABC NFT Logo"
+            className="h-20 w-auto hover:opacity-80 transition-opacity"
+          />
         </Link>
-        <div className="hidden md:flex space-x-6">
-          <Link
-            to="/"
-            className="text-white hover:text-light-accent transition-colors font-medium"
-          >
-            Home
-          </Link>
-          <Link
-            to="/mint"
-            className="text-white hover:text-light-accent transition-colors font-medium"
-          >
-            Mint
-          </Link>
-        </div>
+
       </div>
 
       <div className="flex items-center space-x-4">
