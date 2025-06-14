@@ -1,5 +1,4 @@
-import React from 'react';
-import { Header, HeroSection, RoadmapSection, FAQSection, Footer } from '../components/ui';
+import { HeroSection, RoadmapSection, FAQSection, Footer } from '../components/ui';
 
 const Landing = () => {
     return (

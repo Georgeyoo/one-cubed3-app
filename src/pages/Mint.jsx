@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ethers } from 'ethers';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/ui/Navbar';
 
 export default function Mint() {
   const [selectedContract, setSelectedContract] = useState('A');
