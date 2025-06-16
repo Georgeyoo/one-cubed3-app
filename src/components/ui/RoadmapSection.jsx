@@ -9,13 +9,13 @@ const RoadmapItem = ({ icon, phase, description, index, total }) => {
     return (
         <>
             {/* Icon and connecting line column */}
-            <div className="flex flex-col items-center relative">
+            <div className="flex flex-col items-center justify-center relative">
                 {/* Continuous vertical line (background) */}
                 {!isFirst && (
-                    <div className="absolute top-0 w-[1.5px] lg:w-[2px] bg-light-accent/60 h-6 lg:h-8 -translate-y-full"></div>
+                    <div className="absolute top-0 w-[1.5px] lg:w-[2px] bg-white/60 h-6 lg:h-8 -translate-y-full"></div>
                 )}
                 {!isLast && (
-                    <div className="absolute bottom-0 w-[1.5px] lg:w-[2px] bg-light-accent/60 h-6 lg:h-8 translate-y-full"></div>
+                    <div className="absolute bottom-1 w-[1.5px] lg:w-[2px] bg-white/60 h-5 lg:h-8 translate-y-full"></div>
                 )}
 
                 {/* Icon container with background circle */}

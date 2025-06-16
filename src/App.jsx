@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landing from './pages/Landing';
 import Mint from './pages/Mint';
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from './utils/ScrollToTop';
 
 function App() {
   return (
