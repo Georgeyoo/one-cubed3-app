@@ -20,7 +20,7 @@ const RoadmapItem = ({ icon, phase, description, index, total }) => {
 
                 {/* Icon container with background circle */}
                 <div className="relative z-10 flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-dark-bg border-2 border-light-accent rounded-full mb-2 lg:mb-3">
-                    <div className="text-light-accent" data-icon={icon} data-size="24px" data-weight="regular">
+                    <div className="text-[#E9EDDE]" data-icon={icon} data-size="24px" data-weight="regular">
                         {icon === "CircleNotch" && (
                             <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256" className="lg:w-6 lg:h-6 xl:w-7 xl:h-7">
                                 <path d="M232,128a104,104,0,0,1-208,0c0-41,23.81-78.36,60.66-95.27a8,8,0,0,1,6.68,14.54C60.15,61.59,40,93.27,40,128a88,88,0,0,0,176,0c0-34.73-20.15-66.41-51.34-80.73a8,8,0,0,1,6.68-14.54C208.19,49.64,232,87,232,128Z" />
@@ -43,7 +43,7 @@ const RoadmapItem = ({ icon, phase, description, index, total }) => {
             {/* Content column */}
             <div className="flex flex-1 flex-col py-4 lg:py-6 xl:py-8">
                 <p className="text-white text-base lg:text-lg xl:text-xl 2xl:text-2xl font-medium leading-normal mb-1">{phase}</p>
-                <p className="text-light-accent/80 text-base lg:text-lg xl:text-xl 2xl:text-xl font-normal leading-normal">{description}</p>
+                <p className="text-[#E9EDDE]/80 text-base lg:text-lg xl:text-xl 2xl:text-xl font-normal leading-normal">{description}</p>
             </div>
         </>
     );

@@ -10,9 +10,9 @@ const FAQItem = ({ question, answer, isOpen, onToggle }) => {
                     onToggle();
                 }}
             >
-                <p className="text-white text-sm sm:text-base lg:text-xl xl:text-2xl font-medium leading-normal">{question}</p>
+                <p className="text-[#E9EDDE] text-sm sm:text-base lg:text-xl xl:text-2xl font-medium leading-normal">{question}</p>
                 <div
-                    className={`text-white transition-transform duration-200 lg:scale-110 ${isOpen ? 'rotate-180' : ''}`}
+                    className={`text-[#E9EDDE] transition-transform duration-200 lg:scale-110 ${isOpen ? 'rotate-180' : ''}`}
                     data-icon="CaretDown"
                     data-size="20px"
                     data-weight="regular"
@@ -36,16 +36,16 @@ const FAQSection = () => {
 
     const faqItems = [
         {
-            question: "What is ABC?",
-            answer: "ABC is a collection of 10,000 unique digital collectibles living on the Ethereum blockchain. Each ABC is a work of art, with a variety of traits and rarities."
+            question: "What is cubed3?",
+            answer: "cubed3 is a collection of unique digital collectibles living on the Binance Smart Chain. Each cubed3 is a work of art, with a variety of traits and rarities."
         },
         {
-            question: "How do I get an ABC?",
-            answer: "You can purchase ABC NFTs through our official dApp or on secondary marketplaces like OpenSea. Connect your wallet and follow the minting process."
+            question: "How do I get an cubed3?",
+            answer: "You can purchase cubed3 NFTs through our official dApp or on secondary marketplaces like OpenSea. Connect your wallet and follow the minting process."
         },
         {
-            question: "What are the benefits of owning an ABC?",
-            answer: "ABC holders get access to exclusive community events, early access to future drops, voting rights on community decisions, and potential future utility within the ABC ecosystem."
+            question: "What are the benefits of owning an cubed3?",
+            answer: "cubed3 holders get access to exclusive community events, early access to future drops, voting rights on community decisions, and potential future utility within the cubed3 ecosystem."
         }
     ];
 
@@ -59,7 +59,7 @@ const FAQSection = () => {
         setOpenItems(newOpenItems);
     }; return (
         <div>
-            <h2 className="text-white text-xl sm:text-2xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight tracking-[-0.015em] pb-6 lg:pb-12 xl:pb-16 text-center">
+            <h2 className="text-[#E9EDDE] text-xl sm:text-2xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight tracking-[-0.015em] pb-6 lg:pb-12 xl:pb-16 text-center">
                 Frequently Asked Questions
             </h2>
             <div className="flex flex-col gap-4 lg:gap-6 xl:gap-8 max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto">
