@@ -97,9 +97,8 @@ export default function Mint() {
             </Link>
           </div>
 
-          <h1 className="text-4xl font-bold text-center mb-10 text-slate-100">Mint Your NFT</h1>          
-          <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-            <div className="md:col-span-4 space-y-6 p-6 bg-[#3D3B30]/50 backdrop-blur-md rounded-lg shadow-xl border border-slate-600/70 md:bg-[#3D3B30]/70 md:border-slate-600/50">
+          <h1 className="text-4xl font-bold text-center mb-10 text-slate-100">Mint Your NFT</h1>          <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            <div className="md:col-span-4 space-y-6 p-6 bg-slate-800/50 backdrop-blur-md rounded-lg shadow-xl border border-slate-600/70 md:bg-slate-800/70 md:border-slate-600/50">
               <div>
                 <label className="block text-sm font-medium text-slate-300 mb-1" htmlFor="nft-choice">
                   Choose NFT:
@@ -148,8 +147,7 @@ export default function Mint() {
                     </div>
                   </div>
                 </div>)}
-            </div>          
-            <div className="md:col-span-8 bg-slate-800/50 backdrop-blur-md rounded-lg shadow-xl overflow-hidden border border-slate-600/70 md:bg-slate-800/70 md:border-slate-600/50">
+            </div>          <div className="md:col-span-8 bg-slate-800/50 backdrop-blur-md rounded-lg shadow-xl overflow-hidden border border-slate-600/70 md:bg-slate-800/70 md:border-slate-600/50">
               <img
                 alt={`NFT ${selectedContract} preview`}
                 className="w-full h-96 md:h-[32rem] lg:h-[36rem] object-cover"
