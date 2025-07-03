@@ -18,7 +18,7 @@ const HeroSection = () => {
                     className="h-60 lg:h-80 xl:h-80 w-auto hover:opacity-80 transition-opacity mb-6"
                 />
                 <h2 className="text-white text-2xl leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
-                    Three unique NFT options, each secured on the Ethereum blockchain
+                    Three unique NFT options, each secured on the Binance Smart Chain
                 </h2>
             </div>
             <Link to="/mint">

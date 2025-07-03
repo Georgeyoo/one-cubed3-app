@@ -36,16 +36,16 @@ const FAQSection = () => {
 
     const faqItems = [
         {
-            question: "What is ABC?",
-            answer: "ABC is a collection of 10,000 unique digital collectibles living on the Ethereum blockchain. Each ABC is a work of art, with a variety of traits and rarities."
+            question: "What is cubed3?",
+            answer: "cubed3 is a collection of unique digital collectibles living on the Binance Smart Chain. Each cubed3 is a work of art, with a variety of traits and rarities."
         },
         {
-            question: "How do I get an ABC?",
-            answer: "You can purchase ABC NFTs through our official dApp or on secondary marketplaces like OpenSea. Connect your wallet and follow the minting process."
+            question: "How do I get an cubed3?",
+            answer: "You can purchase cubed3 NFTs through our official dApp or on secondary marketplaces like OpenSea. Connect your wallet and follow the minting process."
         },
         {
-            question: "What are the benefits of owning an ABC?",
-            answer: "ABC holders get access to exclusive community events, early access to future drops, voting rights on community decisions, and potential future utility within the ABC ecosystem."
+            question: "What are the benefits of owning an cubed3?",
+            answer: "cubed3 holders get access to exclusive community events, early access to future drops, voting rights on community decisions, and potential future utility within the cubed3 ecosystem."
         }
     ];
 
