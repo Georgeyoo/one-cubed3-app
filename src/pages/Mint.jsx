@@ -1,13 +1,104 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ethers } from 'ethers';
 import Navbar from '../components/ui/Navbar';
+import Button from '../components/ui/Button';
+import { ethers } from 'ethers';
+import { useWeb3 } from '../hooks/useWeb3';
+import { NETWORK, CONTRACTS } from '../config.js';
 
 export default function Mint() {
+  const { provider, contracts } = useWeb3();
   const [selectedContract, setSelectedContract] = useState('A');
   const [quantity, setQuantity] = useState(1);
   const [isMinting, setIsMinting] = useState(false);
   const [walletAddress, setWalletAddress] = useState(null);
+  const [txHash, setTxHash] = useState('');
+
+const handleMint = async () => {
+  // 1) Make sure wallet & signer are ready
+  const contract = contracts[selectedContract];
+  if (!contract) {
+    return alert('🔌 Please connect your wallet first!');
+  }
+
+  // 2) Read price from RPC
+  const { address, abi } = CONTRACTS[selectedContract];
+  const rpcProvider      = new ethers.JsonRpcProvider(NETWORK.rpcUrl);
+  const readOnly         = new ethers.Contract(address, abi, rpcProvider);
+  const costPerToken     = await readOnly.cost();
+
+  // 3) Send mint in one go
+  try {
+    setIsMinting(true);
+    const totalCost = costPerToken * BigInt(quantity);
+    const tx        = await contract.mint(quantity, { value: totalCost });
+    setTxHash(tx.hash);
+    await tx.wait();
+    alert('🎉 Mint successful!');
+  } catch (err) {
+    console.error('Mint failed:', err);
+    alert('❌ Mint failed: ' + (err.reason || err.message || err));
+  } finally {
+    setIsMinting(false);
+  }
+};
+
+
+//   const handleMint = async () => {
+//   // 0) Signer contract (from useWeb3)
+//   const contract = contracts[selectedContract];
+//   if (!contract) {
+//     return alert('🔌 Please connect your wallet first!');
+//   }
+
+//   // 1) Read-only RPC contract for views
+//   const { address, abi } = CONTRACTS[selectedContract];
+//   const rpcProvider      = new ethers.JsonRpcProvider(NETWORK.rpcUrl);
+//   const readOnly         = new ethers.Contract(address, abi, rpcProvider);
+
+//   // 2) Check state & cost
+//   const [paused, presale, costPerToken] = await Promise.all([
+//     readOnly.paused(),
+//     readOnly.presale(),
+//     readOnly.cost(),
+//   ]);
+//   console.log({ paused, presale, costPerToken: costPerToken.toString() });
+
+//   if (paused) {
+//     return alert('🚫 Contract is paused');
+//   }
+
+//   // 3) Ensure wallet on BSC
+//   const netInfo = await provider.getNetwork();
+//   if (netInfo.chainId !== NETWORK.chainId) {
+//     return alert('⚠️ Please switch your wallet to Binance Smart Chain');
+//   }
+
+//   // 4) Simulate the mint on the signer contract
+//   try {
+//     await contract.callStatic.mint(quantity, {
+//       value: costPerToken * BigInt(quantity),
+//     });
+//   } catch (simError) {
+//     console.error('Mint simulation failed:', simError.reason || simError);
+//     return alert('Mint would revert: ' + (simError.reason || simError.message));
+//   }
+
+//   // 5) Actually send
+//   try {
+//     setIsMinting(true);
+//     const totalCost = costPerToken * BigInt(quantity);
+//     const tx        = await contract.mint(quantity, { value: totalCost });
+//     setTxHash(tx.hash);
+//     await tx.wait();
+//     alert('🎉 Mint successful!');
+//   } catch (sendError) {
+//     console.error('Mint failed:', sendError);
+//     alert('❌ Mint failed: ' + (sendError.reason || sendError.message));
+//   } finally {
+//     setIsMinting(false);
+//   }
+// };
 
   useEffect(() => {
     // Check if wallet is connected
@@ -43,35 +134,6 @@ export default function Mint() {
       }
     };
   }, []);
-
-  const handleMint = async () => {
-    if (!walletAddress) {
-      alert('Please connect your wallet first!');
-      return;
-    }
-
-    setIsMinting(true);
-    try {
-      // TODO: Replace with actual smart contract interaction
-      console.log(`Minting ${quantity} of NFT ${selectedContract} from wallet ${walletAddress}`);
-
-      // Example of how you would interact with the contract:
-      // const provider = new ethers.BrowserProvider(window.ethereum);
-      // const signer = await provider.getSigner();
-      // const contract = new ethers.Contract(contractAddress, contractABI, signer);
-      // const tx = await contract.mint(quantity, { value: ethers.parseEther("0.1") });
-      // await tx.wait();
-
-      // Simulate minting delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      alert(`Successfully minted ${quantity} NFT${quantity > 1 ? 's' : ''}!`);
-    } catch (err) {
-      console.error('Minting failed:', err);
-      alert('Minting failed. Please try again.');
-    } finally {
-      setIsMinting(false);
-    }
-  };
 
   return (
     <div className="min-h-screen relative overflow-hidden">      {/* Blurred NFT Background */}
@@ -160,14 +222,33 @@ export default function Mint() {
           </div>
 
           <div className="mt-12 text-center">
-            <button
+            <Button
+              size="large"
+              variant="primary"
               onClick={handleMint}
               disabled={isMinting || !walletAddress}
-              className="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold px-8 py-3 rounded-md text-lg w-full max-w-md mx-auto transition-colors"
+              className="w-full max-w-md"
             >
-              {!walletAddress ? 'Connect Wallet to Mint' :
-                isMinting ? 'Minting...' : 'Mint NFT'}
-            </button>          {!walletAddress && (
+              {!walletAddress
+                ? 'Connect Wallet to Mint'
+                : isMinting
+                  ? 'Minting…'
+                  : 'Mint Your NFT'}
+            </Button>
+            {txHash && (
+              <p className="mt-4 text-center">
+                🎉 Transaction submitted!{' '}
+                <a
+                  href={`https://bscscan.com/tx/${txHash}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline text-glaucous"
+                >
+                  View on BscScan
+                </a>
+              </p>
+            )}
+            {!walletAddress && (
               <p className="mt-4 text-sm text-slate-400">
                 Please connect your wallet using the button in the top right corner
               </p>
