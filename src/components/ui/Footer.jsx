@@ -29,7 +29,7 @@ const Footer = () => {
                     </a>
                 </div>
                 <p className="text-text-secondary text-base lg:text-lg xl:text-xl font-normal leading-normal">
-                    © 2025 OneCubed³, All Rights Reserved
+                    © 2025 cubed³, All Rights Reserved
                 </p>
             </footer>
             <div className="h-5 lg:h-8 xl:h-10 bg-dark-bg"></div>

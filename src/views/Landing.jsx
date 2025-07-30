@@ -26,7 +26,7 @@ export default function Landing() {
                 </div>
 
                 <h1 className="text-white tracking-light text-[32px] font-bold leading-tight px-4 text-center pb-3 pt-6">
-                    OneCubed³ NFT Collection
+                    cubed³ NFT Collection
                 </h1>
                 <p className="text-white text-base font-normal leading-normal pb-3 pt-1 px-4 text-center">
                     A collection of 10,000 unique digital collectibles living on the Ethereum blockchain.
